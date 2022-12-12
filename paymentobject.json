@@ -1,0 +1,12 @@
+{"payment_method": {
+    "upi": {
+      "channel": "link",
+      "upi_id": "testsuccess@gocash",
+      "upi_expiry_minutes": 10,
+      "authorize_only": false
+    },
+    "netbanking": {
+        "channel": "link",
+        "netbanking_bank_code": 3333
+      }
+  }}

@@ -1,0 +1,40 @@
+<button id="pay-button">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+   var options = {
+       "key": "rzp_test_9Mt9pC7zS9CZ5f", 
+       "amount": "50000", 
+       "currency": "INR",
+       "name": "Dummy Academy",
+       "description": "Pay & Checkout this Course, Upgrade your DSA Skill",
+       "order_id": "order_Kpl4iVtDlhUaNQ",  
+       "handler": function (response){
+           console.log(response)
+           alert("This step of Payment Succeeded");
+       },
+       "prefill": {
+         "contact":"9876543210", 
+         "name": "Twinkle Sharma",  
+         "email": "smtwinkle@gmail.com"
+       },
+      "notes" : {
+         "description":"Best Course for SDE placements",
+         "language":"Available in 4 major Languages JAVA, C/C++, Python, Javascript",
+         "access":"This course have Lifetime Access"
+       }, 
+       "theme": {
+           "color": "#2300a3"
+       }
+   };
+   var razorpayObject = new Razorpay(options);
+   console.log(razorpayObject);
+   razorpayObject.on('payment.failed', function (response){
+         console.log(response);
+         alert("This step of Payment Failed");
+   });
+     
+   document.getElementById('pay-button').onclick = function(e){
+       razorpayObject.open();
+       e.preventDefault();
+   }
+</script>
